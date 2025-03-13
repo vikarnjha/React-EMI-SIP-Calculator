@@ -1,11 +1,15 @@
 import { } from 'react'
 import './App.css'
+import EMICalc from './components/EMICalc'
+import SIPCalc from './components/SIPCalc'
+
 
 function App() {
 
   return (
     <>
-        <h1>Hello VJ</h1>
+      <EMICalc/>
+      <SIPCalc/>
     </>
   )
 }
