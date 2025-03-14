@@ -76,6 +76,12 @@ const SIPCalc = () => {
 
             <div className="result-item">
               <p>
+                Total LTCG Tax: <span>₹{result.totalLTCGtax}</span>
+              </p>
+            </div>
+
+            <div className="result-item">
+              <p>
                 Total Maturity: <span>₹{result.totalWealth}</span>
               </p>
             </div>

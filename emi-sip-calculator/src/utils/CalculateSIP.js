@@ -26,9 +26,19 @@ export function CalculateSIP(monthlyInvestment, rate, totalMonths) {
   }
   let totalInterest = totalReturns - totalInvestment;
   let totalWealth = totalReturns;
+  let totalLTCGtax = 0;
+  if (totalInterest > 100000) {
+    totalLTCGtax = (totalInterest - 100000) * 0.1;
+    totalWealth = totalReturns - totalLTCGtax;
+  }
+  else {
+    totalLTCGtax = 0;
+    totalWealth = totalInvestment + totalInterest;
+  }
   return {
     totalInvestment: totalInvestment.toFixed(2),
     totalInterest: totalInterest.toFixed(2),
+    totalLTCGtax: totalLTCGtax.toFixed(2),
     totalWealth: totalWealth.toFixed(2),
   };
 }
