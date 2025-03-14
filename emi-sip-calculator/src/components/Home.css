@@ -1,16 +1,71 @@
-.calc-card {
-    transition: all 0.3s ease-in-out;
-    cursor: pointer;
-    border: 2px solid transparent;
+/* Main Card Styling */
+.container {
+  text-align: left;
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  max-width: 300px;
+  min-height: 180px;
+  margin: auto;
+  transition: box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #f0f0f0;
+  cursor: pointer;
+}
+
+/* Hover Effect */
+.container:hover {
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Title Styling */
+.title {
+  color: #333;
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+/* Description Styling */
+.description {
+  font-size: 1rem;
+  color: #666;
+  line-height: 1.4;
+}
+
+/* Small Bottom-Right Image */
+.img {
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  opacity: 0.8;
+  transition: transform 0.3s ease;
+}
+
+/* Hover Animation */
+.container:hover .img {
+  transform: scale(1.1);
+  opacity: 1;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 480px) {
+  .container {
+    max-width: 90%;
+    padding: 15px;
   }
-  
-  .calc-card:hover {
-    transform: scale(1.05);
-    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
+  .title {
+    font-size: 1.2rem;
   }
-  
-  .active-card {
-    border-color: #007bff;
-    box-shadow: 0px 4px 15px rgba(0, 123, 255, 0.5);
+  .description {
+    font-size: 0.9rem;
   }
-  
+  .img {
+    width: 50px;
+    height: 50px;
+  }
+}
