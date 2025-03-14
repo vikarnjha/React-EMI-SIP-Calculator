@@ -4,6 +4,7 @@ import { CalculateSIP } from "../utils/CalculateSIP";
 import "./Component.css";
 
 const SIPCalc = () => {
+  const [action, setAction] = useState("Monthly");
   const [monthlyInvestment, setMonthlyInvestment] = useState(100);
   const [rate, setRate] = useState(10);
   const [timeInYears, setTimeInYears] = useState(5);
@@ -26,6 +27,21 @@ const SIPCalc = () => {
     <>
       <div className="container">
         <h1>SIP Calculator</h1>
+        <div className="action-buttons">
+          <button
+            className={action === "Monthly" ? "active" : ""}
+            onClick={() => setAction("Monthly")}
+          >
+            Monthly
+          </button>
+          <button
+            className={action === "Lumpsum" ? "active" : ""}
+            onClick={() => setAction("Lumpsum")}
+          >
+            Lumpsum
+          </button>
+        </div>
+
         <div className="input-group">
           <label>Monthly Investment:</label>
           <input

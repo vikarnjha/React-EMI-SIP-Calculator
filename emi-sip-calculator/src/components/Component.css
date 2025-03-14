@@ -185,97 +185,147 @@ h1 {
   }
 }
 
-
 /* Responsive Design */
 @media (max-width: 768px) {
-    /* Adjust container width */
-    .container {
-      width: 90%;
-      padding: 1.5rem;
-    }
-  
-    /* Reduce heading size */
-    h1 {
-      font-size: 1.5rem;
-    }
-  
-    /* Adjust input fields */
-    .input-group input {
-      font-size: 0.9rem;
-      padding: 8px;
-    }
-  
-    /* Tenure Inputs */
-    .tenure-inputs {
-      flex-direction: column;
-      gap: 10px;
-    }
-  
-    .tenure-box {
-      width: 100%;
-      padding: 8px;
-    }
-  
-    .tenure-box input {
-      font-size: 0.9rem;
-    }
-  
-    /* Button */
-    .calculate-btn {
-      font-size: 0.9rem;
-      padding: 10px;
-    }
-  
-    /* Result Box */
-    .result-box {
-      padding: 10px;
-    }
-  
-    .result-title {
-      font-size: 1.1rem;
-    }
-  
-    .result-item {
-      font-size: 0.9rem;
-    }
-  
-    /* GST Text */
-    .gst-text {
-      font-size: 0.85rem;
-    }
+  /* Adjust container width */
+  .container {
+    width: 90%;
+    padding: 1.5rem;
   }
-  
-  /* For very small screens (≤ 480px) */
-  @media (max-width: 480px) {
-    h1 {
-      font-size: 1.3rem;
-    }
-  
-    .input-group label {
-      font-size: 0.9rem;
-    }
-  
-    .input-group input {
-      font-size: 0.85rem;
-      padding: 7px;
-    }
-  
-    .calculate-btn {
-      font-size: 0.85rem;
-      padding: 9px;
-    }
-  
-    .result-title {
-      font-size: 1rem;
-    }
-  
-    .result-item {
-      font-size: 0.85rem;
-      padding: 8px 0;
-    }
-  
-    .gst-text {
-      font-size: 0.8rem;
-    }
+
+  /* Reduce heading size */
+  h1 {
+    font-size: 1.5rem;
   }
-  
+
+  /* Adjust input fields */
+  .input-group input {
+    font-size: 0.9rem;
+    padding: 8px;
+  }
+
+  /* Tenure Inputs */
+  .tenure-inputs {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .tenure-box {
+    width: 100%;
+    padding: 8px;
+  }
+
+  .tenure-box input {
+    font-size: 0.9rem;
+  }
+
+  /* Button */
+  .calculate-btn {
+    font-size: 0.9rem;
+    padding: 10px;
+  }
+
+  /* Result Box */
+  .result-box {
+    padding: 10px;
+  }
+
+  .result-title {
+    font-size: 1.1rem;
+  }
+
+  .result-item {
+    font-size: 0.9rem;
+  }
+
+  /* GST Text */
+  .gst-text {
+    font-size: 0.85rem;
+  }
+}
+
+/* For very small screens (≤ 480px) */
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.3rem;
+  }
+
+  .input-group label {
+    font-size: 0.9rem;
+  }
+
+  .input-group input {
+    font-size: 0.85rem;
+    padding: 7px;
+  }
+
+  .calculate-btn {
+    font-size: 0.85rem;
+    padding: 9px;
+  }
+
+  .result-title {
+    font-size: 1rem;
+  }
+
+  .result-item {
+    font-size: 0.85rem;
+    padding: 8px 0;
+  }
+
+  .gst-text {
+    font-size: 0.8rem;
+  }
+}
+
+/* css for toggling */
+/* Action Buttons Container */
+.action-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px 0;
+  background: #f8f9fa;
+  padding: 8px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Buttons */
+.action-buttons button {
+  flex: 1;
+  padding: 12px 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background: #e0e0e0;
+  color: #333;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Active Button */
+.action-buttons button.active {
+  background: #4facfe;
+  color: white;
+  box-shadow: 0px 4px 10px rgba(79, 172, 254, 0.4);
+  transform: scale(1.05);
+}
+
+/* Hover Effect */
+.action-buttons button:hover {
+  background: #00c6ff;
+  transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  .action-buttons {
+    flex-direction: column;
+  }
+
+  .action-buttons button {
+    width: 100%;
+  }
+}
