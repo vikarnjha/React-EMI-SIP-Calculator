@@ -144,8 +144,8 @@ const EMICalc = () => {
           </div>
         )}
 
-        <ToastContainer />
       </div>
+        <ToastContainer />
     </>
   );
 };
