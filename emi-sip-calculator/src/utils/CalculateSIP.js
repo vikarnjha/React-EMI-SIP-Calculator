@@ -1,4 +1,4 @@
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 export function CalculateSIP(monthlyInvestment, rate, totalMonths) {
   if (monthlyInvestment <= 0) {
     toast.error("Please enter valid Amount");

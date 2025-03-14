@@ -1,27 +1,46 @@
 import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { CalculateSIP } from "../utils/CalculateSIP";
+import { CalculateLumpSum } from "../utils/CalculateLumpSum";
 import "./Component.css";
 
 const SIPCalc = () => {
   const [action, setAction] = useState("Monthly");
   const [monthlyInvestment, setMonthlyInvestment] = useState(100);
+  const [lumpsumInvestment, setLumpsumInvestment] = useState(1000);
   const [rate, setRate] = useState(10);
   const [timeInYears, setTimeInYears] = useState(5);
   const [result, setResult] = useState(null);
 
   const handleCalculate = () => {
     const totalMonths = Number(timeInYears) * 12;
-    const details = CalculateSIP(
-      Number(monthlyInvestment),
-      Number(rate),
-      totalMonths
-    );
+
+    const details =
+      action === "Monthly"
+        ? CalculateSIP(Number(monthlyInvestment), Number(rate), totalMonths)
+        : CalculateLumpSum(
+            Number(lumpsumInvestment),
+            Number(rate),
+            Number(timeInYears)
+          );
 
     if (!details) return;
     setResult(details);
-    toast.success("SIP Calculated Successfully");
+    toast.success(
+      `${
+        action === "Monthly" ? "SIP" : "Lumpsum"
+      } Investment Calculated Successfully`
+    );
   };
+
+  const resetFields = () => {
+    setMonthlyInvestment(100);
+    setLumpsumInvestment(1000);
+    setRate(10);
+    setTimeInYears(5);
+    setResult(null);
+  };
+  
 
   return (
     <>
@@ -30,28 +49,47 @@ const SIPCalc = () => {
         <div className="action-buttons">
           <button
             className={action === "Monthly" ? "active" : ""}
-            onClick={() => setAction("Monthly")}
+            onClick={() => {
+              setAction("Monthly");
+              resetFields(); // Call the reset function when switching to Monthly
+            }}
+            
           >
             Monthly
           </button>
           <button
             className={action === "Lumpsum" ? "active" : ""}
-            onClick={() => setAction("Lumpsum")}
+            onClick={() => {
+              setAction("Lumpsum");
+              resetFields(); // Call the reset function when switching to Lumpsum
+            }}
+            
           >
             Lumpsum
           </button>
         </div>
 
         <div className="input-group">
-          <label>Monthly Investment:</label>
+          <label>
+            {action === "Monthly"
+              ? "Monthly Investment:"
+              : "Lumpsum Investment:"}
+          </label>
           <input
             type="number"
-            value={monthlyInvestment}
+            value={action === "Monthly" ? monthlyInvestment : lumpsumInvestment}
             onChange={(e) => {
               let value = e.target.value.replace(/^0+/, "");
-              if (!isNaN(value)) setMonthlyInvestment(value);
+              if (!isNaN(value)) {
+                action === "Monthly"
+                  ? setMonthlyInvestment(value)
+                  : setLumpsumInvestment(value);
+              }
             }}
           />
+        </div>
+
+        <div className="input-group">
           <label>Expected Return Rate (%):</label>
           <input
             type="number"
@@ -71,12 +109,16 @@ const SIPCalc = () => {
             }}
           />
           <button className="calculate-btn" onClick={handleCalculate}>
-            Calculate SIP
+            Calculate {action === "Monthly" ? "SIP" : "Lumpsum"}
           </button>
         </div>
         {result && (
           <div className="result-box">
-            <h2 className="result-title">SIP Calculation Results</h2>
+            <h2 className="result-title">
+              {action === "Monthly"
+                ? "SIP Calculation Results"
+                : "LumpSum Calculation Results"}
+            </h2>
 
             <div className="result-item">
               <p>
