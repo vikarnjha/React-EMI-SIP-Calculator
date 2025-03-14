@@ -40,12 +40,13 @@ const SIPCalc = () => {
     setTimeInYears(5);
     setResult(null);
   };
-  
 
   return (
     <>
       <div className="container">
-        <h1>SIP Calculator</h1>
+        <h1>
+          {action === "Monthly" ? "SIP Calculator" : "Lumpsum Calculator"}
+        </h1>
         <div className="action-buttons">
           <button
             className={action === "Monthly" ? "active" : ""}
@@ -53,7 +54,6 @@ const SIPCalc = () => {
               setAction("Monthly");
               resetFields(); // Call the reset function when switching to Monthly
             }}
-            
           >
             Monthly
           </button>
@@ -63,7 +63,6 @@ const SIPCalc = () => {
               setAction("Lumpsum");
               resetFields(); // Call the reset function when switching to Lumpsum
             }}
-            
           >
             Lumpsum
           </button>
