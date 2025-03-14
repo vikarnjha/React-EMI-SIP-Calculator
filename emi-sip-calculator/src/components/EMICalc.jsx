@@ -9,6 +9,8 @@ const EMICalc = () => {
   const [years, setYears] = useState(0);
   const [months, setMonths] = useState(0);
   const [result, setResult] = useState(null);
+  const [downpayment, setDownpayment] = useState(0);
+
 
   const handleCalculate = () => {
     const totalMonths = Number(years) * 12 + Number(months);
@@ -31,6 +33,18 @@ const EMICalc = () => {
           onChange={(e) => {
             let value = e.target.value.replace(/^0+/, "");
             if (!isNaN(value)) setPrincipal(value);
+          }}
+        />
+      </div>
+
+      <div className="input-group">
+        <label>Downpayment:</label>
+        <input
+          type="number"
+          value={downpayment}
+          onChange={(e) => {
+            let value = e.target.value.replace(/^0+/, "");
+            if (!isNaN(value)) setDownpayment(value);
           }}
         />
       </div>
