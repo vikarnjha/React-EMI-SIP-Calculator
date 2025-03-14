@@ -17,12 +17,11 @@ export function CalculateSIP(monthlyInvestment, rate, totalMonths) {
     return;
   }
   const monthlyRate = rate / 12 / 100;
-//   const totalMonths = totalMonths;
+  //   const totalMonths = totalMonths;
   let totalInvestment = monthlyInvestment * totalMonths;
   let totalReturns = 0;
   for (let i = 1; i <= totalMonths; i++) {
-    totalReturns +=
-      monthlyInvestment * Math.pow(1 + monthlyRate, i);
+    totalReturns += monthlyInvestment * Math.pow(1 + monthlyRate, i);
   }
   let totalInterest = totalReturns - totalInvestment;
   let totalWealth = totalReturns;
@@ -30,8 +29,7 @@ export function CalculateSIP(monthlyInvestment, rate, totalMonths) {
   if (totalInterest > 100000) {
     totalLTCGtax = (totalInterest - 100000) * 0.1;
     totalWealth = totalReturns - totalLTCGtax;
-  }
-  else {
+  } else {
     totalLTCGtax = 0;
     totalWealth = totalInvestment + totalInterest;
   }

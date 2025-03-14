@@ -87,7 +87,8 @@ const SIPCalc = () => {
             </div>
 
             <p className="note-text">
-            ₹1 lakh exemption on LTCG applies per financial year; gains beyond this are taxed at 10%
+              ₹1 lakh exemption on LTCG applies per financial year; gains beyond
+              this are taxed at 10%
             </p>
           </div>
         )}
