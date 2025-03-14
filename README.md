@@ -5,10 +5,15 @@ An intuitive EMI & SIP Calculator built with React.js to help users estimate the
 ✨ Features
 
 ✅ EMI Calculator – Calculate your Equated Monthly Installment for loans.
+
 ✅ SIP Calculator – Estimate your investment returns with a systematic investment plan.
+
 ✅ Intuitive UI – Modern and user-friendly interface with smooth animations.
+
 ✅ Mobile Responsive – Fully optimized for all screen sizes.
+
 ✅ Toggle Between Calculators – Seamlessly switch between EMI and SIP calculations.
+
 ✅ Real-time Computation – Instant results as you enter values.
 
 🚀 Tech Stack
