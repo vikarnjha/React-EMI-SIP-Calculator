@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./EMICalc.css";
 import { CalculateEMI } from "../utils/CalculateEMI.js";
 import { ToastContainer, toast } from "react-toastify";
 
@@ -10,83 +11,116 @@ const EMICalc = () => {
   const [result, setResult] = useState(null);
 
   const handleCalculate = () => {
-    const totalMonths = Number(years) * 12 + Number(months); // Convert tenure to months
+    const totalMonths = Number(years) * 12 + Number(months);
     const details = CalculateEMI(Number(principal), Number(rate), totalMonths);
+
     if (!details) return;
-    else setResult(details);
+    setResult(details);
     toast.success("EMI Calculated Successfully");
   };
 
   return (
-    <>
+    <div className="container">
       <h1>Loan EMI Calculator</h1>
-      <div>
-        <label>Principal Amount: </label>
+
+      <div className="input-group">
+        <label>Principal Amount:</label>
         <input
           type="number"
           value={principal}
           onChange={(e) => {
-            let value = e.target.value.replace(/^0+/, ""); // Remove leading zeros
-            if (!isNaN(value)) {
-              setPrincipal(value);
-            }
+            let value = e.target.value.replace(/^0+/, "");
+            if (!isNaN(value)) setPrincipal(value);
           }}
         />
       </div>
-      <div>
-        <label>Annual Interest Rate (%): </label>
+
+      <div className="input-group">
+        <label>Annual Interest Rate (%):</label>
         <input
           type="number"
           value={rate}
           onChange={(e) => {
-            let value = e.target.value.replace(/^0+/, ""); // Remove leading zeros
-            if (!isNaN(value)) {
-              setRate(value);
-            }
+            let value = e.target.value.replace(/^0+/, "");
+            if (!isNaN(value)) setRate(value);
           }}
         />
       </div>
-      <div>
-        <label>Loan Tenure: </label>
-        <span>Years</span>
-        <input
-          type="number"
-          placeholder="Years"
-          value={years}
-          onChange={(e) => {
-            let value = e.target.value.replace(/^0+/, ""); // Remove leading zeros
-            if (!isNaN(value)) {
-              setYears(value);
-            }
-          }}
-        />
-        <span>Months</span>
-        <input
-          type="number"
-          placeholder="Months"
-          value={months}
-          onChange={(e) => {
-            let value = e.target.value.replace(/^0+/, ""); // Remove leading zeros
-            if (!isNaN(value)) {
-              setMonths(value);
-            }
-          }}
-        />
+
+      <div className="input-group">
+        <label>Loan Tenure:</label>
+        <div className="tenure-inputs">
+          <div className="tenure-box">
+            <span>Years</span>
+            <input
+              type="number"
+              min="0"
+              placeholder="Years"
+              value={years}
+              onChange={(e) => {
+                let value = e.target.value.replace(/^0+/, "");
+                if (!isNaN(value) && value >= 0) setYears(value);
+              }}
+            />
+          </div>
+          <div className="tenure-box">
+            <span>Months</span>
+            <input
+              type="number"
+              min="0"
+              max="11"
+              placeholder="Months"
+              value={months}
+              onChange={(e) => {
+                let value = e.target.value.replace(/^0+/, "");
+                if (!isNaN(value) && value >= 0 && value <= 11)
+                  setMonths(value);
+              }}
+            />
+          </div>
+        </div>
       </div>
-      <button onClick={handleCalculate}>Calculate EMI</button>
+
+      <button className="calculate-btn" onClick={handleCalculate}>
+        Calculate EMI
+      </button>
 
       {result && (
-        <div>
-          <h2>Results:</h2>
-          <p>Loan Amount: ₹{result.totalPrinciple}</p>
-          <p>Monthly EMI: ₹{result.monthlyEMI}</p>
-          <p>Total Interest: ₹{result.totalInterest}</p>
-          <p>Total Amount Payable: ₹{result.totalAmount}</p>
-          <p>18% GST are applicable on the Total Interest</p>
+        <div className="result-box">
+          <h2 className="result-title">EMI Calculation Results</h2>
+
+          <div className="result-item">
+            <p>
+              Loan Amount: <span>₹{result.totalPrinciple}</span>
+            </p>
+          </div>
+
+          <div className="result-item">
+            <p>
+              Monthly EMI: <span>₹{result.monthlyEMI}</span>
+            </p>
+          </div>
+
+          <div className="result-item">
+            <p>
+              Total Interest: <span>₹{result.totalInterest}</span>
+            </p>
+          </div>
+
+          <div className="result-item">
+            <p>
+              Total Amount Payable: <span>₹{result.totalAmount}</span>
+            </p>
+          </div>
+
+          <p className="gst-text">
+            18% GST is applicable on the Total Interest
+          </p>
         </div>
       )}
+
       <ToastContainer />
-    </>
+    </div>
   );
 };
 

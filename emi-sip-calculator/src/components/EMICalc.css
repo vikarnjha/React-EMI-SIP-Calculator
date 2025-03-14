@@ -1,0 +1,186 @@
+/* General Styles */
+body {
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(to right, #4facfe, #00f2fe);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+}
+
+/* Main Container */
+.container {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
+  width: 400px;
+  text-align: center;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Heading */
+h1 {
+  color: #333;
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+}
+
+/* Input Group */
+.input-group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.input-group label {
+  font-weight: 600;
+  color: #333;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.3s;
+}
+
+.input-group input:focus {
+  border-color: #4facfe;
+  outline: none;
+  box-shadow: 0 0 8px rgba(79, 172, 254, 0.5);
+}
+
+/* Tenure Inputs */
+/* Tenure Inputs */
+.tenure-inputs {
+  display: flex;
+  gap: 15px;
+  justify-content: space-between;
+}
+
+.tenure-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  background: #f8f9fa;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  transition: all 0.3s ease-in-out;
+}
+
+.tenure-box span {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #444;
+  margin-bottom: 5px;
+}
+
+.tenure-box input {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  text-align: center;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  background: white;
+  transition: 0.3s;
+}
+
+.tenure-box input:focus {
+  box-shadow: 0 0 8px rgba(79, 172, 254, 0.5);
+  border-color: #4facfe;
+}
+
+/* Prevent negative values */
+.tenure-box input::-webkit-outer-spin-button,
+.tenure-box input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.tenure-box input[type="number"] {
+  appearance: textfield;
+}
+
+/* Calculate Button */
+.calculate-btn {
+  width: 100%;
+  background: #4facfe;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.calculate-btn:hover {
+  background: #00c6ff;
+  transform: scale(1.05);
+}
+
+/* Result Box */
+.result-box {
+  margin-top: 20px;
+  background: #f4f4f4;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: left;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.result-title {
+  font-size: 1.2rem;
+  color: #333;
+  text-align: center;
+}
+
+.result-item {
+  padding: 10px 0;
+  font-size: 1rem;
+  border-bottom: 1px solid #ddd;
+}
+
+.result-item:last-child {
+  border-bottom: none;
+}
+
+.result-item p {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 500;
+}
+
+.result-item span {
+  color: #007bff;
+  font-weight: 600;
+}
+
+/* GST Text */
+.gst-text {
+  font-size: 0.9rem;
+  color: #e63946;
+  text-align: center;
+  margin-top: 10px;
+  font-weight: 500;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
