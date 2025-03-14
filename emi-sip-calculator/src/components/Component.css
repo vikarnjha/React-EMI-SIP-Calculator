@@ -16,8 +16,14 @@ body {
   border-radius: 12px;
   box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
   width: 400px;
+  max-width: 90%; /* Ensure responsiveness */
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   animation: fadeIn 0.5s ease-in-out;
+  box-sizing: border-box;
+  overflow: hidden; /* Prevents content from overflowing */
 }
 
 /* Heading */
@@ -29,8 +35,10 @@ h1 {
 
 /* Input Group */
 .input-group {
+  width: 100%;
   margin-bottom: 15px;
   text-align: left;
+  box-sizing: border-box;
 }
 
 .input-group label {
@@ -46,6 +54,7 @@ h1 {
   border-radius: 8px;
   font-size: 1rem;
   transition: all 0.3s;
+  box-sizing: border-box;
 }
 
 .input-group input:focus {
@@ -55,10 +64,10 @@ h1 {
 }
 
 /* Tenure Inputs */
-/* Tenure Inputs */
 .tenure-inputs {
   display: flex;
-  gap: 15px;
+  gap: 10px;
+  width: 100%;
   justify-content: space-between;
 }
 
@@ -98,17 +107,6 @@ h1 {
   border-color: #4facfe;
 }
 
-/* Prevent negative values */
-.tenure-box input::-webkit-outer-spin-button,
-.tenure-box input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-.tenure-box input[type="number"] {
-  appearance: textfield;
-}
-
 /* Calculate Button */
 .calculate-btn {
   width: 100%;
@@ -120,6 +118,7 @@ h1 {
   font-size: 1rem;
   cursor: pointer;
   transition: 0.3s;
+  margin-top: 10px;
 }
 
 .calculate-btn:hover {
@@ -135,6 +134,7 @@ h1 {
   border-radius: 10px;
   text-align: left;
   animation: fadeIn 0.5s ease-in-out;
+  width: 100%;
 }
 
 .result-title {
@@ -163,14 +163,48 @@ h1 {
   color: #007bff;
   font-weight: 600;
 }
-
-/* GST Text */
 .note-text {
   font-size: 0.9rem;
-  color: #e63946;
+  color: red;
   text-align: center;
-  margin-top: 10px;
-  font-weight: 500;
+}
+
+/* Toggle Buttons */
+.action-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px 0;
+  background: #f8f9fa;
+  padding: 8px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+}
+
+.action-buttons button {
+  flex: 1;
+  padding: 12px 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background: #e0e0e0;
+  color: #333;
+  transition: all 0.3s ease-in-out;
+}
+
+.action-buttons button.active {
+  background: #4facfe;
+  color: white;
+  box-shadow: 0px 4px 10px rgba(79, 172, 254, 0.4);
+  transform: scale(1.05);
+}
+
+.action-buttons button:hover {
+  background: #00c6ff;
+  transform: scale(1.05);
 }
 
 /* Animations */
@@ -187,71 +221,28 @@ h1 {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  /* Adjust container width */
   .container {
     width: 90%;
     padding: 1.5rem;
   }
 
-  /* Reduce heading size */
-  h1 {
-    font-size: 1.5rem;
-  }
-
-  /* Adjust input fields */
-  .input-group input {
-    font-size: 0.9rem;
-    padding: 8px;
-  }
-
-  /* Tenure Inputs */
   .tenure-inputs {
     flex-direction: column;
-    gap: 10px;
   }
 
-  .tenure-box {
-    width: 100%;
-    padding: 8px;
+  .action-buttons {
+    flex-direction: column;
   }
 
-  .tenure-box input {
-    font-size: 0.9rem;
-  }
-
-  /* Button */
   .calculate-btn {
     font-size: 0.9rem;
     padding: 10px;
   }
-
-  /* Result Box */
-  .result-box {
-    padding: 10px;
-  }
-
-  .result-title {
-    font-size: 1.1rem;
-  }
-
-  .result-item {
-    font-size: 0.9rem;
-  }
-
-  /* GST Text */
-  .gst-text {
-    font-size: 0.85rem;
-  }
 }
 
-/* For very small screens (≤ 480px) */
 @media (max-width: 480px) {
   h1 {
     font-size: 1.3rem;
-  }
-
-  .input-group label {
-    font-size: 0.9rem;
   }
 
   .input-group input {
@@ -271,58 +262,6 @@ h1 {
   .result-item {
     font-size: 0.85rem;
     padding: 8px 0;
-  }
-
-  .gst-text {
-    font-size: 0.8rem;
-  }
-}
-
-/* css for toggling */
-/* Action Buttons Container */
-.action-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin: 20px 0;
-  background: #f8f9fa;
-  padding: 8px;
-  border-radius: 8px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-/* Buttons */
-.action-buttons button {
-  flex: 1;
-  padding: 12px 20px;
-  font-size: 1rem;
-  font-weight: 600;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  background: #e0e0e0;
-  color: #333;
-  transition: all 0.3s ease-in-out;
-}
-
-/* Active Button */
-.action-buttons button.active {
-  background: #4facfe;
-  color: white;
-  box-shadow: 0px 4px 10px rgba(79, 172, 254, 0.4);
-  transform: scale(1.05);
-}
-
-/* Hover Effect */
-.action-buttons button:hover {
-  background: #00c6ff;
-  transform: scale(1.05);
-}
-
-/* Responsive Design */
-@media (max-width: 480px) {
-  .action-buttons {
-    flex-direction: column;
   }
 
   .action-buttons button {
