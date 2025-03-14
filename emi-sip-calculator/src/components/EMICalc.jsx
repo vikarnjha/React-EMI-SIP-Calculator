@@ -14,7 +14,7 @@ const EMICalc = () => {
 
   const handleCalculate = () => {
     const totalMonths = Number(years) * 12 + Number(months);
-    const details = CalculateEMI(Number(principal), Number(rate), totalMonths);
+    const details = CalculateEMI(Number(principal), Number(downpayment), Number(rate), totalMonths);
 
     if (!details) return;
     setResult(details);
@@ -106,6 +106,12 @@ const EMICalc = () => {
           <div className="result-item">
             <p>
               Loan Amount: <span>₹{result.totalPrinciple}</span>
+            </p>
+          </div>
+
+          <div className="result-item">
+            <p>
+              Downpayment: <span>₹{result.totalDownpayment}</span>
             </p>
           </div>
 

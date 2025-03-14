@@ -1,7 +1,15 @@
 import { ToastContainer, toast } from "react-toastify";
-export function CalculateEMI(principal, rate, totalMonths) {
+export function CalculateEMI(principal, downpayment, rate, totalMonths) {
   if (principal <= 0) {
     toast.error("Please enter valid Amount");
+    return;
+  }
+  if (principal < downpayment) {
+    toast.error("Downpayment cannot be greater than principal amount");
+    return;
+  }
+  if (downpayment < 0) {
+    toast.error("Downpayment cannot be negative");
     return;
   }
   if (rate <= 0) {
@@ -26,18 +34,23 @@ export function CalculateEMI(principal, rate, totalMonths) {
     return;
   }
   const monthlyRate = rate / 12 / 100;
+  const totalLoan = principal - downpayment;
 
   const monthlyEMI =
-    (principal * monthlyRate * Math.pow(1 + monthlyRate, totalMonths)) /
+    (totalLoan * monthlyRate * Math.pow(1 + monthlyRate, totalMonths)) /
     (Math.pow(1 + monthlyRate, totalMonths) - 1);
 
-  const totalInterest = monthlyEMI * totalMonths - principal;
+  const totalInterest = monthlyEMI * totalMonths - totalLoan;
   const totalAmount = principal + totalInterest;
   const totalPrinciple = principal;
+  const totalDownpayment = downpayment;
+
+
 
   return {
     monthlyEMI: monthlyEMI.toFixed(2),
     totalPrinciple: totalPrinciple.toFixed(2),
+    totalDownpayment: totalDownpayment.toFixed(2),
     totalInterest: totalInterest.toFixed(2),
     totalAmount: totalAmount.toFixed(2),
   };
