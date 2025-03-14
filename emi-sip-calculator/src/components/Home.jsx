@@ -13,7 +13,7 @@ const Home = () => {
       <div className="container">
         <h2 className="title">EMI Calculator</h2>
         <p className="description">
-        Calculate EMI on your loans - home loan, car loan or personal loan
+          Easily calculate your monthly loan EMI and total interest payable.
         </p>
         <img className="img" src={emi} alt="EMI Icon" loading="lazy" />
       </div>
@@ -22,8 +22,7 @@ const Home = () => {
       <div className="container">
         <h2 className="title">SIP Calculator</h2>
         <p className="description">
-          Calculate how much you need to save or how much you will accumulate
-          with your SIP
+          Estimate your SIP returns and plan your investments effectively.
         </p>
         <img className="img" src={sip} alt="SIP Icon" loading="lazy" />
       </div>
