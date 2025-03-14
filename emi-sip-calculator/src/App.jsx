@@ -8,8 +8,8 @@ function App() {
 
   return (
     <>
-      <EMICalc/>
-      {/* <SIPCalc/> */}
+      {/* <EMICalc/> */}
+      <SIPCalc/>
     </>
   )
 }
