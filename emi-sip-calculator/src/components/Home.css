@@ -1,0 +1,16 @@
+.calc-card {
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    border: 2px solid transparent;
+  }
+  
+  .calc-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  .active-card {
+    border-color: #007bff;
+    box-shadow: 0px 4px 15px rgba(0, 123, 255, 0.5);
+  }
+  
