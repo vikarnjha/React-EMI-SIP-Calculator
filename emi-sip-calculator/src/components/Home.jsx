@@ -7,7 +7,6 @@ import sip from "../assets/sip.png";
 import emi from "../assets/emi.png";
 
 const Home = () => {
-  // const [selectedCalc, setSelectedCalc] = useState(null);
   return (
     <>
       {/* EMI Calculator here */}
