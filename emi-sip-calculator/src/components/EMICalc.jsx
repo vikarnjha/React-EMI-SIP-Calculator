@@ -12,7 +12,9 @@ const EMICalc = () => {
   const handleCalculate = () => {
     const totalMonths = Number(years) * 12 + Number(months); // Convert tenure to months
     const details = CalculateEMI(Number(principal), Number(rate), totalMonths);
-    setResult(details);
+    if (!details) return;
+    else setResult(details);
+    toast.success("EMI Calculated Successfully");
   };
 
   return (
@@ -23,7 +25,12 @@ const EMICalc = () => {
         <input
           type="number"
           value={principal}
-          onChange={(e) => setPrincipal(e.target.value)}
+          onChange={(e) => {
+            let value = e.target.value.replace(/^0+/, ""); // Remove leading zeros
+            if (!isNaN(value)) {
+              setPrincipal(value);
+            }
+          }}
         />
       </div>
       <div>
@@ -31,22 +38,39 @@ const EMICalc = () => {
         <input
           type="number"
           value={rate}
-          onChange={(e) => setRate(e.target.value)}
+          onChange={(e) => {
+            let value = e.target.value.replace(/^0+/, ""); // Remove leading zeros
+            if (!isNaN(value)) {
+              setRate(value);
+            }
+          }}
         />
       </div>
       <div>
         <label>Loan Tenure: </label>
+        <span>Years</span>
         <input
           type="number"
           placeholder="Years"
           value={years}
-          onChange={(e) => setYears(e.target.value)}
+          onChange={(e) => {
+            let value = e.target.value.replace(/^0+/, ""); // Remove leading zeros
+            if (!isNaN(value)) {
+              setYears(value);
+            }
+          }}
         />
+        <span>Months</span>
         <input
           type="number"
           placeholder="Months"
           value={months}
-          onChange={(e) => setMonths(e.target.value)}
+          onChange={(e) => {
+            let value = e.target.value.replace(/^0+/, ""); // Remove leading zeros
+            if (!isNaN(value)) {
+              setMonths(value);
+            }
+          }}
         />
       </div>
       <button onClick={handleCalculate}>Calculate EMI</button>
@@ -58,6 +82,7 @@ const EMICalc = () => {
           <p>Monthly EMI: ₹{result.monthlyEMI}</p>
           <p>Total Interest: ₹{result.totalInterest}</p>
           <p>Total Amount Payable: ₹{result.totalAmount}</p>
+          <p>18% GST are applicable on the Total Interest</p>
         </div>
       )}
       <ToastContainer />
